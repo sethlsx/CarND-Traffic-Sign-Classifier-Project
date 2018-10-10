@@ -105,12 +105,18 @@ BATCH_SIZE = 3000
 EPOCHS = 2000
 optimizer = tf.train.AdamOptimizer()
 
+I described how I trained the model in the next section.
+
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
 * training set accuracy of 99.9%
-* validation set accuracy of 95.8%
-* test set accuracy of 94.1%
+* validation set accuracy of 97.0%
+* test set accuracy of 95.2%
+
+The learning curve is as follows:
+
+![learning_curve]['.\images\learning_curve.png']
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
