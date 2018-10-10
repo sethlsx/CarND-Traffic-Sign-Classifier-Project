@@ -47,6 +47,10 @@ I have a image to show one picture for each label.
 
 ![labels]['.\images\labels_display.png']
 
+And here is the histogram for the train data set. It is clear that it's not evenly ditributed.
+
+![histo]['.\images\histogram.png']
+
 ### Design and Test a Model Architecture
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
@@ -129,6 +133,15 @@ If a well known architecture was chosen:
  
 I choosed LeNet for the training because that's the only model for now. But I believe this architechture could do so well in this project is because as it does well in the letters classification, this architechture has strong ability to identify curves and shapes in images, which are similar in letters classification and this project.
 
+* Please add some words on what was the process that you ended up with the final model, e.g. what is the process of choosing batch size, number of layers? How do you choose the optimizer and why? What should you do if the model is either overfitting or underfitting?
+
+I choose the batch size 3000 because the instructor said that in his experience that data sets with more than 3000 data points could give reliable results.
+
+As for the number of layers, I start with 3 layers like the original LeNet, then I tried to add a full connected layer as the first layer, it made the model seriously overfitting. So I gave up the idea and went back to 3 layers, after I preprocess the data properly and increase the output depth of the first layer, it produced great results.
+
+I choose the AdamOptimizer simply because it worked pretty well in the LeNet quiz. However, as reviewer raised the question, I did some research. According to this [paper](https://arxiv.org/pdf/1609.04747.pdf), Adam is a better optimizer because it usually converges much more quickly than other optimizer in most scenarios.
+
+My model do have overfitting problems as the accuracy on train data set is higher than validation set and test set. To further improve the model, I would decrease the first layer depth from 43 to 30s as I can't decrease keep probility anymore.
 
 ### Test a Model on New Images
 
@@ -139,7 +152,8 @@ Here are five German traffic signs that I found on the web:
 ![alt text]['images\images.jpeg'] ![alt text]['images\images-2.jpg'] ![alt text]['images\images-3.jpg'] 
 ![alt text]['images\images-4.jpeg'] ![alt text]['images\images-5.jpg']
 
-The first and fourth images might be difficult to classify because there are lots of trees, buildings and cars in the background which could form false lines for the model to detect.
+
+The images I found are basically taken from a front angle, are fairly bright, of high contrast. There are little jitteriness either. But there are backgound objects in all of them, especially the 1st and 4th images.The first and fourth images might be difficult to classify because there are lots of trees, buildings and cars in the background which could form false lines for the model to detect.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
